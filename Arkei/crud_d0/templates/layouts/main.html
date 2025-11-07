@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+    {% block style %} {% endblock %}
+    <title> {% block title %} {{ titulo }} {% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'main' %}"><img src="{% static 'img/Logo-Arkei.png' %}" alt="Inicio" class="logo"></a>
+        <ul class="nav-center">
+            <li><a href="">Hombre</a></li>
+            <li><a href="">Mujer</a></li>
+            <li><a href="">Accesorios</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="{% url 'login' %}"> Cerrar sesión</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+        <div class="container">
+            <div class="container-left">
+            </div>
+            <div class="sidebar">
+                <ul>
+                    <li><a href="{% url 'cuenta' %}" class="ajax-link">Mi cuenta</a></li>
+                    <li><a href="{% url 'productos' %}" class="ajax-link">Mis productos</a></li>
+                    <li><a href="">Camisetas</a></li>
+                    <li><a href="">Pantalones</a></li>
+                    <li><a href="">Gorras</a></li>
+                    <li><a href="">Buzos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenido" id="contenido-principal">
+            <div class="main-container">
+                <div class="title-product">
+                    <h3 > Estilo único </h3>
+                </div>
+                <div class="img-product">
+                    <img src="" alt="Imagen de producto" class="logo-product">
+                </div>
+                <div class="description-product">
+                    <div class="description-content">
+                        <h2 class="description-title">Descripción</h2>
+                        <p class="description-text"> Aquí va la descripción del producto </p>
+                    </div>
+                    <div class="description-content">
+                        <h2 class="description-title">Detalles</h2>
+                        <p class="description-text"> Aquí van los detalles del producto </p>
+                    </div>
+                    <div class="description-content">
+                        <h2 class="description-title">Precio</h2>
+                        <p class="description-text"> Aquí va el precio del producto </p>
+                    </div>
+                    <div class="description-content">
+                        <h2 class="description-title">Vendedor</h2>
+                        <p class="description-text"> Aquí va el nombre del vendedor </p>
+                    </div>
+                    <div class="description-content">
+                        <h2 class="description-title">Ubicación</h2>
+                        <p class="description-text"> Aquí va la ubicación del producto </p>
+                    </div>
+                    <div class="description-content">
+                        <h2 class="description-title">Estado</h2>
+                        <p class="description-text"> Aquí va el estado del producto </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endblock %}
+
+    </main>
+
+    <footer>
+        <p> Todos los derechos reservados </p>
+    </footer>
+
+    {% block script %} {% endblock %}
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.ajax-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            fetch(link.href, {
+                headers: {'X-Requested-With': 'XMLHttpRequest'}
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('contenido-principal').innerHTML = html;
+            });
+        });
+    });
+
+    
+    const logoImg = document.querySelector('nav .logo');
+    const logoLink = logoImg ? logoImg.closest('a') : null; 
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar || !logoLink) return;
+
+    let openTimer = null;
+    let closeTimer = null;
+
+    const openSidebar = () => {
+        clearTimeout(closeTimer);
+        openTimer = setTimeout(() => sidebar.classList.add('sidebar--open'), 80);
+    };
+    const closeSidebar = () => {
+        clearTimeout(openTimer);
+        closeTimer = setTimeout(() => sidebar.classList.remove('sidebar--open'), 200);
+    };
+
+    // abrir al entrar sobre el logo (y al focusear para accesibilidad)
+    logoLink.addEventListener('mouseenter', openSidebar);
+    logoLink.addEventListener('focus', openSidebar);
+    logoLink.addEventListener('mouseleave', closeSidebar);
+    logoLink.addEventListener('blur', closeSidebar);
+
+    // mantener abierto cuando el cursor esté sobre el sidebar
+    sidebar.addEventListener('mouseenter', () => { clearTimeout(closeTimer); });
+    sidebar.addEventListener('mouseleave', closeSidebar);
+});
+</script>
+</body>
+</html>

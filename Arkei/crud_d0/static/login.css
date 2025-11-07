@@ -1,0 +1,218 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background: linear-gradient(135deg, white 0%, white 100%);
+    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Ubuntu', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: var(--footer-height);
+}
+
+:root{
+    --nav-height: 64px;
+    --footer-height: 48px;
+}
+
+nav {
+    height: var(--nav-height);
+    background-color:  #191414;
+    color: white;
+    padding: 2px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.2);
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+nav .logo{
+    position: absolute; 
+    left: 12px;
+    width: 100px;    
+    height: 60px;
+    object-fit: contain;
+    margin: 0;
+}
+
+nav .nav-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: inherit;
+    font-weight: 600;
+}
+
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    position: relative; 
+    overflow: hidden;   
+    flex: 1 1 auto;     
+    min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+}
+
+
+.image-container {
+    position: absolute;
+    inset: 0;          
+    z-index: 0;
+    margin: 0;
+    pointer-events: none; 
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; 
+    object-position: center 10%; /* <-- centrar horizontal y bajar 30%; probar 50% para centro exacto */
+    display: block;
+}
+
+
+.title-container {
+    position: relative; 
+    z-index: 100;       
+    
+    background: rgba(255, 255, 255, 0.35); 
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.08);
+    z-index: 4; 
+}
+
+.title-container {
+    
+    background: rgba(255, 255, 255, 0.12);        
+    -webkit-backdrop-filter: blur(8px);           
+    backdrop-filter: blur(8px);                   
+    border: 1px solid rgba(255, 255, 255, 0.18);  
+    box-shadow: 0 8px 30px rgba(44, 62, 80, 0.12);
+    border-radius: 18px;
+    padding: 32px 40px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+    z-index: 4; 
+    background-clip: padding-box; 
+}
+
+
+.title-container input,
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #111;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+
+.login-form button {
+    background: linear-gradient(90deg, rgba(102,126,234,0.95) 0%, rgba(118,75,162,0.95) 100%);
+    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.18);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.login-form button:hover {
+    background: linear-gradient(90deg, #5a67d8 0%, #6b47b6 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.login-form .error-message {
+    color: #e53e3e;
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+
+footer {
+    height: var(--footer-height);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #191414;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2px 20px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+
+.label-container {
+    position: relative;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    color: white;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+    margin-top: 12px; 
+}
+
+.label-container a {
+    display: block;
+    width: auto;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    padding: 4px 6px;
+    background: transparent;
+    border-radius: 4px;
+
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+.label-container a:hover,
+.label-container a:focus {
+    color: #7b2cbf; 
+    transform: translateY(-2px); 
+    outline: none;
+}

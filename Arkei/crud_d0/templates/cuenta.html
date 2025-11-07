@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cuenta.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+    <title>Cuenta</title>
+</head>
+<body>
+    <!-- Solo el contenido, para AJAX o incluir en tu layout -->
+    <div class="main-container">
+        <div class="cuenta-info-row">
+            <div>
+                <h2>Información de la cuenta</h2>
+                <span class="cuenta-label">Nombre:</span>
+                <span class="cuenta-dato">{{ user.first_name }} {{ user.last_name }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Usuario:</span>
+                <span class="cuenta-dato">{{ user.username }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Correo electrónico:</span>
+                <span class="cuenta-dato">{{ user.email }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Fecha de registro:</span>
+                <span class="cuenta-dato">{{ user.date_joined|date:"d/m/Y" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="cuenta-info-row">
+            <div>
+                <h2>Información de la cuenta</h2>
+                <span class="cuenta-label">Nombre:</span>
+                <span class="cuenta-dato">{{ user.first_name }} {{ user.last_name }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Usuario:</span>
+                <span class="cuenta-dato">{{ user.username }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Correo electrónico:</span>
+                <span class="cuenta-dato">{{ user.email }}</span>
+            </div>
+            <div>
+                <span class="cuenta-label">Fecha de registro:</span>
+                <span class="cuenta-dato">{{ user.date_joined|date:"d/m/Y" }}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

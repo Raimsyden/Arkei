@@ -1,0 +1,30 @@
+body, .main-container, .cuenta-info-row {
+    padding: 0;
+    margin: 0;
+}
+
+.cuenta-info-row, .main-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.main-container {
+    width: 940px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 98%;
+    overflow: block;
+    border-radius: 10px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 0;
+    align-items: flex-start;
+}

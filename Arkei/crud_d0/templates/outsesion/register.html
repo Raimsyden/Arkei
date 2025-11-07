@@ -1,0 +1,44 @@
+{% extends "./login.html" %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'register.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main class="container">
+    <h2>Crear usuario</h2>
+    <p>	
+        Para poder ingresar al sistema cree un usuario, si ya tiene el usuario creado por
+        favor devuevase al <a href="/">login</a>
+    </p>
+    <div class="column justify-content-center">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+				<div class="form-register">
+					<label for="username">Nombre de usuario:</label>
+					<input type="text" name="username" id="username" placeholder="Usuario..." required>
+					<label for="password">Contraseña:</label>
+					<input type="password" name="password" id="password" placeholder="Contraseña..." required>
+					<label for="password2">Repetir contraseña:</label>
+					<input type="password" name="password2" id="password2" placeholder="Repetir contraseña..." required>
+					<label for="email">Correo electrónico:</label>
+					<input type="email" name="email" id="email" placeholder="Correo electrónico..." required>
+					<label for="first_name">Nombre:</label>
+					<input type="text" name="first_name" id="first_name" placeholder="Nombre..." required>
+					<label for="last_name">Apellido:</label>
+					<input type="text" name="last_name" id="last_name" placeholder="Apellido..." required>
+					<hr>
+					<input type="button" value="Cancelar" class="sumbit-btn" onclick="window.location.href='/'"/>
+					<input type="submit" value="Crear" class="sumbit-btn" />
+				</div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
